@@ -1,0 +1,17 @@
+# Python virtual environment
+venv/
+env/
+
+# Python temporary files
+__pycache__/
+*.pyc
+
+# Database
+*.db
+
+# Generated files PDF and Excel
+*.pdf
+*.xlsx
+
+# Keys
+.env
