@@ -9,10 +9,10 @@ class HTMLInjector:
 
         self.environment = Environment(loader=loader_templates)
 
-    def inject_data(self, fetch_template):
+    def inject_data(self, fetch_template, injection_filename="injectionfile"):
         template = self.environment.get_template(fetch_template)
 
         html = template.render(name="MARIUSZ")
 
-        with open("generate.html", "w", encoding="utf-8") as f:
+        with open(f"{injection_filename}.html", "w", encoding="utf-8") as f:
             f.write(html)

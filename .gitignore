@@ -8,6 +8,7 @@ __pycache__/
 
 # Database
 *.json
+*.sqlite
 
 # personal img
 hero.jpg
