@@ -10,24 +10,30 @@ A project that automates the creation of tailored PDF resumes based on collected
 *   **HTML5 & CSS3** - Resume templates and structure styling
 *   **Git & GitHub** - Version control and documentation
 *   **VS Code** - Main development environment
-*   **JSON** - Data container
+*   **Sqlite** - Data container
+
+## File Directory
+```text
+LazyApply/
+├── database/
+│   └── main.sqlite     #main candidate data
+├── static/
+│   ├── modern.css
+│   ├── icons/
+│   └── imgs/
+├─── templates/
+│   └── modern.html     #inject html from database jinja2
+├─── generators/
+│   ├── html_injector.py        #jinja2
+│   └── pdf_generator.py        #weasyprint
+├── main.py     #core logic
+├── venv
+├── .gitignore.py
+└── README.md
+```
 
 ## 🏗 System Architecture (Flowchart)
-
-```mermaid
-graph TD
-    %% Version 1.0: Static CV Generator
-    Data["data/<br>main_cv.json"]
-    Generator["cv_generator.py<br>PDF Generator"]
-    HTML["templates/<br>cv_template.html"]
-    CSS["static/<br>cv_style.css"]
-    PDF["ready_CV.pdf"]
-
-    Data -->|Data Transfer| Generator
-    HTML -.->|Structure| Generator
-    CSS -.->|Appearance| Generator
-    Generator -->|WeasyPrint| PDF
-```
+![Schemat architektury projektu](architecture.drawio.svg)
 
 ## 🚀 Getting Started
 
