@@ -7,8 +7,9 @@ class DataManager:
         self.conn = None
         self.cursor = None
         self.__create_table()
+        self.close()
 
-    def __connect(self):
+    def connect(self):
         try:
             self.conn = sqlite3.connect(self.database_path)
             self.cursor = self.conn.cursor()
@@ -16,8 +17,12 @@ class DataManager:
         except sqlite3.Error as e:
             print(f"Error Connecting to databases: {e}")
 
+    def close(self):
+        if self.conn:
+            self.conn.close()
+
     def __create_table(self):
-        self.__connect()
+        self.connect()
         self.cursor.execute("""CREATE TABLE if not exists users(
             id INTEGER PRIMARY KEY,
             name TEXT NOT NULL,
@@ -27,30 +32,40 @@ class DataManager:
             e_mail TEXT NOT NULL UNIQUE,
             summary TEXT NOT NULL,
             github TEXT,
-            linkedin TEXT)""")
+            linkedin TEXT
+            )""")
+
+        self.cursor.execute("""CREATE TABLE if not exists education(
+            id INTEGER PRIMARY KEY,
+            user_id INTEGER,
+            name TEXT NOT NULL,
+            time TEXT NOT NULL,
+            description TEXT NOT NULL,
+            FOREIGN KEY (user_id) REFERENCES users(id)
+            )""")
 
         self.cursor.execute("""CREATE TABLE if not exists hobbies(
             id INTEGER PRIMARY KEY,
             user_id INTEGER,
-            name TEXT,
+            name TEXT NOT NULL,
             FOREIGN KEY (user_id) REFERENCES users(id)
             )""")
 
-        self.cursor.execute("""CREATE TABLE if not exists experiendces(
+        self.cursor.execute("""CREATE TABLE if not exists experiences(
             id INTEGER PRIMARY KEY,
             user_id INTEGER,
-            name TEXT,
-            position TEXT,
-            time TEXT,
-            description TEXT,
+            name TEXT NOT NULL,
+            position TEXT NOT NULL,
+            time TEXT NOT NULL,
+            description TEXT NOT NULL,
             FOREIGN KEY (user_id) REFERENCES users(id)
             )""")
 
         self.cursor.execute("""CREATE TABLE if not exists skills(
             id INTEGER PRIMARY KEY,
             user_id INTEGER,
-            name TEXT,
+            name TEXT NOT NULL,
             FOREIGN KEY (user_id) REFERENCES users(id)
             )""")
         self.conn.commit()
-        self.conn.close()
+        self.close()
