@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="static/cv_style.css">
-    <title>{{ basic_data.name }} {{ basic_data.lastname }}- CV</title>
+    <link rel="stylesheet" href="static/modern.css">
+    <title>{{ name }} {{ lastname }}-CV</title>
 </head>
 
 <body>
@@ -27,29 +27,29 @@
                     <li class="contact-list__item">
                         <img class="icon icon--small"
                             src="static/icons/Near-Me-Fill--Streamline-Sharp-Fill-Streamline-Material-Free.svg"
-                            alt="icon location">{{ basic_data.city }}
+                            alt="icon location">{{ city }}
                     </li>
                     <li class="contact-list__item">
                         <img class="icon icon--small"
                             src="static/icons/Call-Fill--Streamline-Rounded-Fill-Material-Symbols.svg"
-                            alt="icon phone">{{ basic_data.phone }}
+                            alt="icon phone">{{ phone }}
                     </li>
                     <li class="contact-list__item">
                         <img class="icon icon--small"
                             src="static/icons/Send-Alt-Fill--Streamline-Sharp-Fill-Streamline-Material-Free.svg"
-                            alt="icon send letter">{{ basic_data.e_mail }}
+                            alt="icon send letter">{{ email }}
                     </li>
                     <li class="contact-list__item">
-                        <a href="{{ basic_data.github }}" class="contact-list__link">
+                        <a href="{{ github }}" class="contact-list__link">
                             <img class="icon icon--small"
                                 src="static/icons/Logo-Github-Fill--Streamline-Sharp-Fill-Streamline-Material-Free.svg"
-                                alt="icon github">GitHub
+                                alt="icon github">Github
                         </a>
                     </li>
                     <li class="contact-list__item">
-                        <a href="{{ basic_data.linkdin }}">
+                        <a href="{{ linkedin }}">
                             <img class="icon icon--small" src="static/icons/Linkedin-Logo--Streamline-Radix.svg"
-                                alt="icon linkedin">LinkedIn
+                                alt="icon linkedin">Linkedin
                         </a>
                     </li>
                 </ul>
@@ -63,9 +63,9 @@
                 </h2>
                 <div class="timeline">
                     <div class="timeline__item flex_col">
-                        <div class="timeline__title">{{ basic_data.education.name }}</div>
-                        <div class="timeline__date">{{ basic_data.education.time }}</div>
-                        <div class="timeline__desc">{{ basic_data.education.direction }} {{ basic_data.education.specialization }}</div>
+                        <div class="timeline__title">{{ name_school }}</div>
+                        <div class="timeline__date">{{ time_school }}</div>
+                        <div class="timeline__desc">{{ specialization }}</div>
                     </div>
                 </div>
             </section>
@@ -78,7 +78,7 @@
                 </h2>
                 <ul class="contact-list">
                     {% for hobby in hobbies %}
-                    <li class="contact-list__item">{{ hobby }}</li>
+                    <li class="contact-list__item">{{ hobby }} </li>
                     {% endfor %}
                 </ul>
             </section>
@@ -88,8 +88,8 @@
             <div class="content__decoration-triangle"></div>
 
             <header class="header">
-                <h1 class="header__name">{{ basic_data.name }} {{ basic_data.lastname }}</h1>
-                <div class="header__job-title">{{ basic_data.role }}</div>
+                <h1 class="header__name">{{ name }} {{ lastname }}</h1>
+                <div class="header__job-title">Python developer</div>
             </header>
 
             <section class="section">
@@ -109,7 +109,8 @@
                 {% for experience in experiences %}
                 <div class="experience">
                     <div class="experience__header">
-                        <span class="experience__title">{{ experience.name }} {{ experience.company}}</span>
+                        <span class="experience__title">{{ experience.name }}</span>
+                        <span class="experience__title">{{ experience.position }}</span>
                         <span class="experience__date">{{ experience.time }}</span>
                     </div>
                     <p class="section__text">{{ experience.description }}</p>
@@ -124,7 +125,7 @@
                 </h2>
                 <div class="skills">
                     {% for skill in skills %}
-                    <div class="skills__tag">{{ skill }}</div>
+                    <div class="skills__tag">{{ skill.name }}</div>
                     {% endfor %}
                 </div>
             </section>

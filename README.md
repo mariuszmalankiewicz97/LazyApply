@@ -10,24 +10,41 @@ A project that automates the creation of tailored PDF resumes based on collected
 *   **HTML5 & CSS3** - Resume templates and structure styling
 *   **Git & GitHub** - Version control and documentation
 *   **VS Code** - Main development environment
-*   **JSON** - Data container
+*   **Sqlite** - Data container
+
+## File Directory
+```text
+LazyApply/
+├── database/
+│   ├── database.db     #main database with table like, users, hobbies, experiendces and skills
+│   ├── database.py     #manamegnemt database like connect and create table
+│   └── repositories/
+│      ├──user_repository.py
+│      ├──hobby_repository.py
+│      ├──experience_repository.py
+│      └──skill_repository.py
+├── models/
+│   ├── user_model.py
+│   ├── hobby_model.py
+│   ├── experience_model.py
+│   └── skill_model.py
+├── static/
+│   ├── modern.css
+│   ├── icons/
+│   └── imgs/
+├─── templates/
+│   └── modern.html     #inject html from database jinja2
+├─── generators/
+│   ├── html_injector.py        #jinja2
+│   └── pdf_generator.py        #weasyprint
+├── main.py     #core logic
+├── venv
+├── .gitignore
+└── README.md
+```
 
 ## 🏗 System Architecture (Flowchart)
-
-```mermaid
-graph TD
-    %% Version 1.0: Static CV Generator
-    Data["data/<br>main_cv.json"]
-    Generator["cv_generator.py<br>PDF Generator"]
-    HTML["templates/<br>cv_template.html"]
-    CSS["static/<br>cv_style.css"]
-    PDF["ready_CV.pdf"]
-
-    Data -->|Data Transfer| Generator
-    HTML -.->|Structure| Generator
-    CSS -.->|Appearance| Generator
-    Generator -->|WeasyPrint| PDF
-```
+![Schemat architektury projektu](architecture.drawio.svg)
 
 ## 🚀 Getting Started
 
@@ -68,6 +85,8 @@ To maintain high code quality, readability, and adherence to backend development
 
 * **Black** - The uncompromising Python code formatter.
 * **Flake8** - For linting and real-time error checking.
+* **MVC** -(Model-View-Controller) is a pattern that divides an application into three parts: Model (data), View (presentation), and Controller (logic).
+* **OOP** - Easier data management and hiding
 
 If you are using **VS Code**, please ensure you have the official `Black Formatter` and `Flake8` extensions installed, and enable the `Format On Save` option in your editor settings before committing any new code.
 
