@@ -12,7 +12,13 @@ class SkillRepository:
         return skill_model
 
     def select_skill(self):
-        sql = "SELECT * FROM SKILLS"
+        sql = "SELECT name FROM SKILLS"
         rows = self.db_manager.cursor.execute(sql).fetchall()
+
+        result = []
+
         for row in rows:
-            print(row)
+            dick = {"name": row[0]}
+            result.append(dick)
+
+        return result

@@ -18,9 +18,19 @@ class ExperienceRepository:
         return expierience_model
 
     def select_experience(self):
-        sql = "SELECT * FROM EXPERIENCES"
+        sql = "SELECT name, position, time, description FROM EXPERIENCES"
 
         rows = self.db_manager.cursor.execute(sql).fetchall()
 
+        result = []
+
         for row in rows:
-            print(row)
+            dict = {
+                "name": row[0],
+                "position": row[1],
+                "time": row[2],
+                "description": row[3],
+            }
+            result.append(dict)
+
+        return result

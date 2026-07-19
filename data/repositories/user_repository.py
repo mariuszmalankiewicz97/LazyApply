@@ -22,7 +22,7 @@ class UserRepository:
         return user_model
 
     def select_user(self):
-        sql = "SELECT * from users"
+        sql = "SELECT name, lastname, city, phone, e_mail, summary, github, linkedin from users"
         rows = self.db_manager.cursor.execute(sql).fetchall()
         for row in rows:
-            print(row)
+            return row

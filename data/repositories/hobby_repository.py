@@ -13,7 +13,12 @@ class HobbyRepository:
         return hobby_model
 
     def select_hobby(self):
-        sql = "SELECT * FROM HOBBIES"
+        sql = "SELECT name FROM HOBBIES"
         rows = self.db_manager.cursor.execute(sql).fetchall()
+
+        result = []
+
         for row in rows:
-            print(row)
+            result.append(row[0])
+
+        return result

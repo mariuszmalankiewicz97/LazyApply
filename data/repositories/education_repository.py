@@ -18,9 +18,9 @@ class EducationRepository:
         return education_model
 
     def select_education(self):
-        sql = "SELECT * FROM education"
+        sql = "SELECT name, time, description FROM education"
 
         rows = self.db_manager.cursor.execute(sql).fetchall()
 
         for row in rows:
-            print(row)
+            return row
