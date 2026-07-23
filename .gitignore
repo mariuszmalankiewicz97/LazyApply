@@ -15,6 +15,3 @@ hero.jpg
 # Generated files PDF and Excel
 *.pdf
 *.xlsx
-
-# Keys
-.env
